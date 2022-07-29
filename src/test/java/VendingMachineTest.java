@@ -119,14 +119,33 @@ public class VendingMachineTest {
         assertEquals(false, vendy.customerAddCoin(one));
     }
 
-//     @Test
-//    public void customerCanEnterCode() {
-//         assertEquals("this works", vendy.customerEnterCode(Code.A3));
-//    }
+    @Test
+    public void canGetCustomerTotalCoinValue() {
+        vendy.customerAddCoin(fifty);
+        vendy.customerAddCoin(fifty);
+        vendy.customerAddCoin(fifty);
+        vendy.customerAddCoin(fifty);
+        assertEquals(200, vendy.customerTotalCoinValue());
+    }
 
-//    @Test
-//    public void customerCanBuyProduct() {
-//        vendy.customerEnterCode(Code.A3);
+    @Test
+    public void canGetCorrectCustomerChange() {
+        vendy.getCoinReturn().setReturnedCoins(vendy.calculateCustomerChange(153));
+        assertEquals(4, vendy.getCoinReturn().getReturnedCoins().size());
+    }
+
+    @Test
+    public void customerCanBuyProduct() {
+        vendy.customerAddCoin(fifty);
+        vendy.customerAddCoin(fifty);
+        vendy.customerAddCoin(fifty);
+        vendy.customerAddCoin(fifty);
+        assertEquals(0, vendy.customerEnterCode(Code.A3));
 //        assertEquals(2, vendy.getDrawers().get(2).getProducts().size());
-//    }
+    }
+
+    @Test
+    public void testCustomerThing() {
+        assertEquals(69, vendy.testEnterCode(Code.A1));
+    }
 }

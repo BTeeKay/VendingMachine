@@ -17,7 +17,7 @@ public class CoinTest {
     }
 
     @Test
-    public void coinHasValueofTen() {
+    public void coinHasValueOfTen() {
         assertEquals(10, ten.getType().value);
     }
 }
